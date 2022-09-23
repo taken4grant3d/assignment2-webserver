@@ -28,6 +28,7 @@ def webServer(port=13331):
       
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
 
+
       #This variable can store your headers you want to send for any valid or invalid request.
       #Content-Type above is an example on how to send a header as bytes
       valid = "HTTP/1.1 200 OK\r\n\r\n".encode()
@@ -52,9 +53,7 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       #Fill in start
       connectionSocket.send("HTTP/1.1 404 File Not Found\r\n".encode())
-
       #Fill in end
-
 
       #Close client socket
       #Fill in start
