@@ -38,7 +38,8 @@ def webServer(port=13331):
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
       #Fill in start
       connectionSocket.send(valid)
-      connectionSocket.send(outputdata)
+      connectionSocket.send(f)
+
 
       #Fill in end
                
@@ -46,6 +47,7 @@ def webServer(port=13331):
       #Send the content of the requested file to the client
       for i in f: #for line in file
        connectionSocket.send(i)
+
 
       
     except Exception as e:
