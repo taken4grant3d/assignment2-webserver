@@ -31,29 +31,26 @@ def webServer(port=13331):
       #This variable can store your headers you want to send for any valid or invalid request.
       #Content-Type above is an example on how to send a header as bytes
       valid = "HTTP/1.1 200 OK\r\n\r\n".encode()
-      e = "404 File Not Found\r\n".encode()
+      invalid = "HTTP/1.1 404 File Not Found\r\n".encode()
 
 
       #Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok? 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
       #Fill in start
       connectionSocket.send(valid)
-      connectionSocket.send(f)
-
-
       #Fill in end
                
 
       #Send the content of the requested file to the client
       for i in f: #for line in file
        connectionSocket.send(i)
-
+       connectionSocket.close()
 
       
     except Exception as e:
       # Send response message for invalid request due to the file not being found (404)
       #Fill in start
-      connectionSocket.send(Exception)
+      connectionSocket.send(invalid)
       #Fill in end
 
 
